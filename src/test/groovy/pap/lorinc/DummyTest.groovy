@@ -5,7 +5,7 @@ import spock.lang.Specification
 /*
  * This is the `test` code, i.e. the specification for what we guarantee about our application.
  */
-class DummyTest extends Specification {
+class DummyTest extends Specification { // TODO change to your own
     /*@formatter:off*/
     def 'simple assertion'() {
         when:   def value = DummyClass.dummyMethod()
