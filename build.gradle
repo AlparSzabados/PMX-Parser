@@ -4,8 +4,8 @@ buildscript {
     }
 }
 
-group 'pap.lorinc' // TODO change to your own
-version '1.0.0'    // TODO change to your own
+group 'szabados.alpar'
+version '1.0.0'
 
 apply plugin: 'groovy'
 apply plugin: 'java'
@@ -14,7 +14,7 @@ apply plugin: 'idea'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 
-mainClassName = 'pap.lorinc.DummyClass' // TODO change to your own
+mainClassName = 'szabados.alpar.DummyClass'
 
 repositories {
     mavenCentral()
