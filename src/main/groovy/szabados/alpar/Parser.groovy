@@ -12,7 +12,7 @@ import static szabados.alpar.parseAll.ParseText.parseText
 
 //TODO make it work for every item
 class Parser {
-    static Sheet parser(List<String> list) {
+    static Sheet parser(List<List<String>> list) {
         List<Staff> staffs = []
         List<StaffChild> elements = []
 
