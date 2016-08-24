@@ -3,7 +3,8 @@ package szabados.alpar.parseAll
 import groovy.transform.Canonical
 
 //TODO add missing fields
-@Canonical class Text {
+@Canonical
+class Text extends StaffChild {
     int staffIndex
     float horizontalOffset
     float verticalOffset

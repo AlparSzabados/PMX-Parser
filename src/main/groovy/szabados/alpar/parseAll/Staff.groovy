@@ -6,5 +6,5 @@ import groovy.transform.Canonical
     int staffIndex
     float horizontalOffset
     float rightEnd
-    ArrayList elements
+    List<StaffChild> elements = []
 }

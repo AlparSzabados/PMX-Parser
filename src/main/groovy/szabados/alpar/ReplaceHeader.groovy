@@ -1,25 +1,39 @@
 package szabados.alpar
 
 class ReplaceHeader {
-    static replaceHeader(String text) {
-        List<String> fileContentAsList = []
 
+    static List<List<String>> replaceHeader(String text) {
+        List<List<String>> fileContentAsList = []
         text.eachLine { line ->
-            def listOfStrings = splitLinesToLists(line)
-
-            listOfStrings.removeAll { it.bytes == [] } //TODO find a petter way. Using `space` is not working.
-
-            def stringHeader = '_'
-            if (listOfStrings[0].startsWith(stringHeader))
-                listOfStrings = listOfStrings.join(' ')
-
-            fileContentAsList += [listOfStrings]
+            fileContentAsList += [(removeLeadingZeroes(splitLinesToLists(line)))]
         }
         fileContentAsList
     }
 
-    def static List<String> splitLinesToLists(String line) {
-        def pattern = / (\s)?/
-        line.split(pattern) as List
+    static List<String> removeLeadingZeroes(List<String> text) {
+        List<String> noLeadingZeroes = []
+        def negative = '-'
+        for (int i = 0; i < text.size(); i++) {
+            String minus = ''
+            int j
+            for (j = 0; j < text[i].size(); j++) {
+                if (text[i].size() == 1) break
+                else if (text[i][j] == negative && text[i][j + 1] == '0') {
+                    j += 1
+                    minus = negative
+                } else if (text[i][j] != '0') break
+            }
+            noLeadingZeroes += "${minus}${text[i].substring(j)}"
+        }
+        noLeadingZeroes
+    }
+
+    static List<String> splitLinesToLists(String text) {
+        String line = text.trim()
+        if (!line.startsWith('_')) {
+            def pattern = / (\s)?/
+            line.split(pattern) as List
+        } else
+            [line]
     }
 }

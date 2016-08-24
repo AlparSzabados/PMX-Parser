@@ -2,48 +2,64 @@ package szabados.alpar
 
 import szabados.alpar.parseAll.Sheet
 import szabados.alpar.parseAll.Staff
+import szabados.alpar.parseAll.StaffChild
 
+import static szabados.alpar.parseAll.MusicalElements.Elements.*
+import static szabados.alpar.parseAll.MusicalElements.TypeOfElement
 import static szabados.alpar.parseAll.ParseNote.parseNote
 import static szabados.alpar.parseAll.ParseStaff.parseStaff
 import static szabados.alpar.parseAll.ParseText.parseText
 
 //TODO make it work for every item
 class Parser {
-    static parser(List list) {
-        Staff staff
-        List<Staff> staves = []
+    static Sheet parser(List<String> list) {
+        List<Staff> staffs = []
+        List<StaffChild> elements = []
 
-        for (i in 0..<list.size()-1) {
-            def currentItem = list[i]
-            def nextItem = list[i + 1]
-
-            List elements = []
-
-            if (currentItem[1] == '8') {
-                staves += parseStaff(currentItem)
-            } else {
-                staff = new Staff()
+        int currentStaff = 0
+        for (int i in 0..<list.size()) {
+            List<String> currentElement = list[i]
+            List<String> nextElement = list[i + 1]
+            if (currentElement[0] == TypeOfElement(STAFF) && currentElement[1].toInteger() != currentStaff) {
+                staffs += parseStaff(currentElement)
+                currentStaff = currentElement[1].toInteger()
+            } else if (currentElement[0] == TypeOfElement(STAFF) && currentElement[1].toInteger() == currentStaff) {
+                elements += parseStaff(currentElement)
+            } else if (currentElement[0] == TypeOfElement(NOTE)) {
+                elements += parseNote(currentElement)
+            } else if (currentElement[0] == TypeOfElement(TEXT)) {
+                elements += parseText(currentElement, nextElement)
             }
-
-            if (currentItem[1].toString().toInteger() == staves.staffIndex || staff.staffIndex == 0) {
-                if (currentItem[0] == '1') {
-                    elements += parseNote(currentItem)
-                }
-
-                if (currentItem[0] == 't' && nextItem instanceof String) {
-                    elements += parseText(currentItem, nextItem)
-                }
-            }
-
-            if (staves != null)
-                staves.elements = elements
-            else
-                staff.elements = elements
         }
 
-        if (staves != null) {
-            return new Sheet(staffs: staves)
-        } else
-            return new Sheet(staffs: staff)
+        def staffsNeeded = 0
+        for (int i in 0..<elements.size()) {
+            if (staffs.size() == 0) {
+                staffs += new Staff(staffIndex: elements[i].staffIndex)
+                staffsNeeded = elements[i].staffIndex
+            }
+            for (int j in 0..<staffs.size()) {
+                if (elements[i].staffIndex == staffs[j].staffIndex && elements[i].staffIndex > staffsNeeded) {
+                    staffsNeeded = elements[i].staffIndex
+                } else if (elements[i].staffIndex > staffsNeeded) {
+                    staffs += new Staff(staffIndex: elements[i].staffIndex)
+                    staffsNeeded = elements[i].staffIndex
+                }
+            }
+        }
+
+        staffs.sort()
+
+        for (int i in 0..<elements.size())
+            for (int j in 0..<staffs.size())
+                if (elements[i].staffIndex == staffs[j].staffIndex)
+                    staffs[j].elements += elements[i]
+
+        return new Sheet(staffs: staffs)
     }
 }
+
+
+
+
+
