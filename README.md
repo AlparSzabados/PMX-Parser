@@ -1,3 +1,5 @@
+https://travis-ci.org/AlparSzabados/PMX-Parser.svg?branch=master
+
 PMX file Parser
 ---
 
