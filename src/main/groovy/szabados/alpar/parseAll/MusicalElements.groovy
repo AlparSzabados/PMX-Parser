@@ -7,7 +7,7 @@ class MusicalElements {
         NOTE, REST, TEXT, STAFF
     }
 
-    static final ArrayList<String> listFirstIndex = ['1', '2', '16', '8']
+    static final ArrayList<String> listFirstIndex = ['1', '2', 't', '8']
 
     public static TypeOfElement(Elements types) {
         switch (types){
