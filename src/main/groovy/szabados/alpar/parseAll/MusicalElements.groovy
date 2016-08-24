@@ -1,24 +1,20 @@
 package szabados.alpar.parseAll
 
-import static szabados.alpar.parseAll.MusicalElements.Elements.*
+enum MusicalElements {
+    NOTE(1),
+    REST(2),
+    TEXT(16),
+    STAFF(8)
 
-class MusicalElements {
-    enum Elements {
-        NOTE, REST, TEXT, STAFF
+    private final int ordinal
+
+    private MusicalElements(int ordinal) {
+        this.ordinal = ordinal
     }
 
-    static final ArrayList<String> listFirstIndex = ['1', '2', 't', '8']
+    private static final List<String> listFirstIndex = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', 't']
 
-    public static TypeOfElement(Elements types) {
-        switch (types){
-            case NOTE: listFirstIndex[0]
-                break
-            case REST: listFirstIndex[1]
-                break
-            case TEXT: listFirstIndex[2]
-                break
-            case STAFF: listFirstIndex[3]
-                break
-        }
+    public static getElement(MusicalElements types) {
+        return listFirstIndex[types.ordinal - 1]
     }
 }
