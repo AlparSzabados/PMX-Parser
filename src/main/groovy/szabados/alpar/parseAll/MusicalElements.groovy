@@ -12,7 +12,7 @@ enum MusicalElements {
         this.ordinal = ordinal
     }
 
-    private static final List<String> listFirstIndex = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', 't']
+    private static final List<String> listFirstIndex = ['1.0000', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', 't']
 
     public static getElement(MusicalElements types) {
         return listFirstIndex[types.ordinal - 1]
