@@ -1,17 +1,13 @@
 package szabados.alpar
 
 import spock.lang.Specification
-import szabados.alpar.parseAll.Note
-import szabados.alpar.parseAll.Sheet
-import szabados.alpar.parseAll.Staff
-import szabados.alpar.parseAll.Text
-import szabados.alpar.parseAll.Condition
+import szabados.alpar.parseAll.*
 
 import static szabados.alpar.Parser.parser
 import static szabados.alpar.ReplaceHeader.replaceHeader
 import static szabados.alpar.parseAll.Accidental.FLAT
-import static szabados.alpar.parseAll.NoteHead.*
-import static Condition.*
+import static szabados.alpar.parseAll.Condition.NO
+import static szabados.alpar.parseAll.NoteHead.BLACK
 
 //TODO make it work for the other test too
 class TestDriven extends Specification {
