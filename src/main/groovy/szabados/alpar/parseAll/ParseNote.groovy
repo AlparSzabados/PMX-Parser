@@ -2,7 +2,6 @@ package szabados.alpar.parseAll
 
 import static szabados.alpar.parseAll.Accidental.getAccidental
 import static szabados.alpar.parseAll.NoteHead.*
-import static Condition.*
 
 class ParseNote {
     static parseNote(List<String> value) {
@@ -17,7 +16,7 @@ class ParseNote {
                         accidentalOffset:   stripAccidOffset(value4),
                         accidParantheses:   (value4 >= 100) ? 100 : 0,
                         noteHead:           getNoteHead((value5 >= 10) ? (value5 - 10) : value5),
-                        noteHeadParantheses: value5 >= 10 ? YES : NO)
+                        noteHeadParantheses: value5 >= 10)
 //                        size:               value[].toFloat())
         /*@formatter:on*/
     }
