@@ -4,8 +4,8 @@ import szabados.alpar.parseAll.Sheet
 import szabados.alpar.parseAll.Staff
 import szabados.alpar.parseAll.StaffChild
 
-import static szabados.alpar.parseAll.MusicalElements.Elements.*
-import static szabados.alpar.parseAll.MusicalElements.TypeOfElement
+import static szabados.alpar.parseAll.MusicalElements.*
+import static szabados.alpar.parseAll.MusicalElements.getElement
 import static szabados.alpar.parseAll.ParseNote.parseNote
 import static szabados.alpar.parseAll.ParseStaff.parseStaff
 import static szabados.alpar.parseAll.ParseText.parseText
@@ -20,14 +20,14 @@ class Parser {
         for (int i in 0..<list.size()) {
             List<String> currentElement = list[i]
             List<String> nextElement = list[i + 1]
-            if (currentElement[0] == TypeOfElement(STAFF) && currentElement[1].toInteger() != currentStaff) {
+            if (currentElement[0] == getElement(STAFF) && currentElement[1].toInteger() != currentStaff) {
                 staffs += parseStaff(currentElement)
                 currentStaff = currentElement[1].toInteger()
-            } else if (currentElement[0] == TypeOfElement(STAFF) && currentElement[1].toInteger() == currentStaff) {
+            } else if (currentElement[0] == getElement(STAFF) && currentElement[1].toInteger() == currentStaff) {
                 elements += parseStaff(currentElement)
-            } else if (currentElement[0] == TypeOfElement(NOTE)) {
+            } else if (currentElement[0] == getElement(NOTE)) {
                 elements += parseNote(currentElement)
-            } else if (currentElement[0] == TypeOfElement(TEXT)) {
+            } else if (currentElement[0] == getElement(TEXT)) {
                 elements += parseText(currentElement, nextElement)
             }
         }
