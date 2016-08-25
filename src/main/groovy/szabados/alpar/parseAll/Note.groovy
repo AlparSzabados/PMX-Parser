@@ -11,6 +11,7 @@ import groovy.transform.Canonical
     float accidentalOffset
     int accidParantheses
     NoteHead noteHead
+    Condition noteHeadParantheses
     float duration
     float stemLenght
     float flag
