@@ -18,7 +18,7 @@ enum Accidental {
         this.ordinal = ordinal
     }
 
-    public static Accidental get(int ordinal){
+    public static Accidental getAccidental(int ordinal){
         for (Accidental accidental : values()) {
             if (ordinal == accidental.ordinal)
                 return accidental
