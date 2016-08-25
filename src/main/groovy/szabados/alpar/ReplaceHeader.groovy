@@ -23,6 +23,8 @@ class ReplaceHeader {
                     minus = negative
                 } else if (text[i][j] != '0') break
             }
+            if (text[i][j] == '.')
+                j -= 1
             noLeadingZeroes += "${minus}${text[i].substring(j)}"
         }
         noLeadingZeroes
