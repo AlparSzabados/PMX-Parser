@@ -19,7 +19,7 @@ enum NoteHead {
         this.ordinal = ordinal
     }
 
-    public static NoteHead getNoteHead(int ordinal){
+    public static NoteHead getNoteHead(int ordinal) {
         for (NoteHead noteHead : values()) {
             if (ordinal == noteHead.ordinal)
                 return noteHead
