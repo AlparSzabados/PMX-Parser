@@ -1,47 +1,52 @@
 package szabados.alpar.parseAll
 
 import static szabados.alpar.parseAll.Accidental.getAccidental
-import static szabados.alpar.parseAll.NoteHead.*
+import static szabados.alpar.parseAll.NoteHead.getNoteHead
+import static szabados.alpar.parseAll.StemDirection.*
 
 class ParseNote {
     static parseNote(List<String> value) {
+        def value4 = value[4]?.toDouble() ?: 0D
+        def accidental = (int) value4 % 10
+        def stem = (int) value4 % 100 - accidental
+        def accidentalInParentheses = value4 >= 100
+        def accidentalOffset = accidentalInParentheses ? value4 - stem - accidental - 100
+                                                       : value4 - stem - accidental
+
+        def value5 = (int) value[5]?.toFloat() ?: 0
+        def noteHeadInParentheses = value5 >= 10
+        def noteHead = noteHeadInParentheses ? value5 - 10 : value5
+
+        def value8 = value[8]?.toFloat() ?: 0F
+        def flags = (int) value8 % 10
+        def dots = (int) value8 % 100 - flags
+        def dotsOffset = (int) value8 - dots - flags
+
         /*@formatter:off*/
-        def value4 = value[4].toDouble()
-        def value5 = value[5].toInteger()
-        return new Note(staffIndex:         value[1].toFloat(),
-                        horizontalOffset:   value[2].toFloat(),
-                        verticalOffset:     value[3].toFloat(),
-                        stem:               stripStem(value4),
-                        accidental:         getAccidental(stripAccidental(value4)),
-                        accidentalOffset:   stripAccidOffset(value4),
-                        accidParantheses:   (value4 >= 100) ? 100 : 0,
-                        noteHead:           getNoteHead((value5 >= 10) ? (value5 - 10) : value5),
-                        noteHeadParantheses: value5 >= 10)
-//                        size:               value[].toFloat())
+        return new Note(staffIndex:               value[1]?.toFloat() ?: 0,
+                        horizontalPosition:       value[2]?.toFloat() ?: 0,
+                        verticalPosition:         value[3]?.toFloat() ?: 0,
+                        accidental:               getAccidental(accidental),
+                        stemDirection:            getStemDirection(stem),
+                        accidentalDisplacement:   accidentalOffset,
+                        accidentalInParentheses:  accidentalInParentheses,
+                        noteHead:                 getNoteHead(noteHead),
+                        noteHeadInParentheses:    noteHeadInParentheses,
+                        duration:                 value[6]?.toFloat() ?: 0,
+                        stemLength:               value[7]?.toFloat() ?: 0,
+                        numberOfFlags:            flags,
+                        numberOfDots:             dots,
+                        dotsOffset:               dotsOffset,
+                        dotDisplacement:          value8 - dotsOffset,
+                        leftRightDisplacement:    value[9]?.toFloat() ?: 0,
+                        marks:                    value[10]?.toFloat() ?: 0,
+                        staffDisplacement:        value[11]?.toFloat() ?: 0 as int,
+                        marksHorizontalOffset:    value[12]?.toFloat() ?: 0,
+                        marksVerticalOffset:      value[13]?.toFloat() ?: 0,
+                        size:                     value[14]?.toFloat() ?: 0,
+                        ledgerLineThickness:      value[15]?.toFloat() ?: 0,
+                        stemThickness:            value[16]?.toFloat() ?: 0,
+                        markSize:                 value[17]?.toFloat() ?: 0)
         /*@formatter:on*/
-    }
-
-    static stripStem(Double n) {
-        if (n >= 100)
-            n -= 100
-        if (n >= 10)
-            return n - (n % 10)
-        else return 0
-    }
-
-    static stripAccidental(Double n) {
-        if (n >= 100)
-            n -= 100
-        if (n >= 20)
-            n -= 20
-        if (n >= 10 && n < 20)
-            n -= 10
-        return n as int
-
-    }
-
-    static stripAccidOffset(Double n) {
-        int n1 = (int) Math.floor(n)
-        n - n1
     }
 }
