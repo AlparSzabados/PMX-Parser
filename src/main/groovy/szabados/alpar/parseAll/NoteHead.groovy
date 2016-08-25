@@ -1,16 +1,17 @@
 package szabados.alpar.parseAll
 
 enum NoteHead {
-    BLACK(0),
-    HALF(1),
-    WHOLE(2),
-    BREVE(3),
-    WHITE_DIAMOND(4),
-    BLACK_DIAMOND(5),
-    X_NOTE(6),
-    HEADLESS(7),
-    DIAMOND_X(8),
-    OVAL_X(9);
+    DEFAULT(0),
+    BLACK(1),
+    HALF(2),
+    WHOLE(3),
+    BREVE(4),
+    WHITE_DIAMOND(5),
+    BLACK_DIAMOND(6),
+    X_NOTE(7),
+    HEADLESS(8),
+    DIAMOND_X(9),
+    OVAL_X(10);
 
     private final int ordinal
 
