@@ -24,9 +24,6 @@ class TestDriven extends Specification {
 
         where:
         fileContent                                                                 || result
-        '0001.0000 0002.0000 0000.0000 -0013.0000 0111.9900 0001.0000 0000.5000\n'+
-        '0008.0000 0002.0000 0.0000 0200.0000'                                      || new Sheet(staffs: [new Staff(staffIndex: 2, horizontalOffset: 0.0, rightEnd: 200.0, elements: [new Note(staffIndex: 2, horizontalPosition: 0.0, verticalPosition: -13.0, stemDirection: UP, accidental: FLAT, accidentalDisplacement: 0.99, accidentalInParentheses: true, noteHead: BLACK, noteHeadInParentheses: false, duration: 0.5)])])
-
         '0008.0000 0002.0000 0.0000 0200.0000\n'+
         '0008.0000 0002.0000 0.0000 0150.0000\n'+
         '0001.0000 0002.0000 0.0000 -0013.0000 1.0000 1.0000'                       || new Sheet(staffs: [new Staff(staffIndex: 2, horizontalOffset: 0, rightEnd: 200, elements: [new Staff(staffIndex: 2, horizontalOffset: 0, rightEnd: 150),
