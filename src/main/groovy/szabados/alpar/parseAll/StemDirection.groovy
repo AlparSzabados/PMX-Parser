@@ -19,4 +19,3 @@ enum StemDirection {
         throw new IllegalArgumentException()
     }
 }
-

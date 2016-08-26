@@ -11,7 +11,6 @@ import static szabados.alpar.ReplaceHeader.replaceHeader
 import static szabados.alpar.parseAll.Accidental.FLAT
 import static szabados.alpar.parseAll.NoteHead.BLACK
 import static szabados.alpar.parseAll.StemDirection.NO_STEM
-import static szabados.alpar.parseAll.StemDirection.UP
 
 //TODO make it work for the other test too
 class TestDriven extends Specification {

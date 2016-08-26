@@ -2,7 +2,7 @@ package szabados.alpar
 
 import spock.lang.Specification
 
-import static szabados.alpar.ReplaceHeader.*
+import static szabados.alpar.ReplaceHeader.replaceHeader
 
 class ReplaceHeaderTest extends Specification {
     /*@formatter:off*/
