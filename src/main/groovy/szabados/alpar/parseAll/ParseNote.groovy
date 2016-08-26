@@ -11,16 +11,17 @@ class ParseNote {
         def stem = (int) value4 % 100 - accidental
         def accidentalInParentheses = value4 >= 100
         def accidentalOffset = accidentalInParentheses ? value4 - stem - accidental - 100
-                                                       : value4 - stem - accidental
+                : value4 - stem - accidental
 
         def value5 = (int) value[5]?.toFloat() ?: 0
         def noteHeadInParentheses = value5 >= 10
         def noteHead = noteHeadInParentheses ? value5 - 10 : value5
 
-        def value8 = value[8]?.toFloat() ?: 0F
+        def value8 = value[8]?.toDouble() ?: 0D
         def flags = (int) value8 % 10
         def dots = (int) value8 % 100 - flags
         def dotsOffset = (int) value8 - dots - flags
+        def dotDisplacement = value8 - flags - dots - dotsOffset
 
         /*@formatter:off*/
         return new Note(staffIndex:               value[1]?.toFloat() ?: 0,
@@ -37,7 +38,7 @@ class ParseNote {
                         numberOfFlags:            flags,
                         numberOfDots:             dots,
                         dotsOffset:               dotsOffset,
-                        dotDisplacement:          value8 - dotsOffset,
+                        dotDisplacement:          dotDisplacement,
                         leftRightDisplacement:    value[9]?.toFloat() ?: 0,
                         marks:                    value[10]?.toFloat() ?: 0,
                         staffDisplacement:        value[11]?.toFloat() ?: 0 as int,
