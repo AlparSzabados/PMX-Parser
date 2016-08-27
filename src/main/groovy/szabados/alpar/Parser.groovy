@@ -1,5 +1,6 @@
 package szabados.alpar
 
+import szabados.alpar.parseAll.ParseRest
 import szabados.alpar.parseAll.Sheet
 import szabados.alpar.parseAll.Staff
 import szabados.alpar.parseAll.StaffChild
@@ -19,16 +20,18 @@ class Parser {
         for (int i in 0..<list.size()) {
             List<String> currentElement = list[i]
             List<String> nextElement = list[i + 1]
+
             if (currentElement[0] == getElement(STAFF) && currentElement[1].toFloat() != currentStaff) {
                 staffs += parseStaff(currentElement)
                 currentStaff = currentElement[1].toFloat()
-            } else if (currentElement[0] == getElement(STAFF) && currentElement[1].toFloat() == currentStaff) {
+            } else if (currentElement[0] == getElement(STAFF) && currentElement[1].toFloat() == currentStaff)
                 elements += parseStaff(currentElement)
-            } else if (currentElement[0] == getElement(NOTE)) {
+            else if (currentElement[0] == getElement(NOTE))
                 elements += parseNote(currentElement)
-            } else if (currentElement[0] == getElement(TEXT)) {
+            else if (currentElement[0] == getElement(REST))
+                elements += ParseRest.parseRest(currentElement)
+            else if (currentElement[0] == getElement(TEXT))
                 elements += parseText(currentElement, nextElement)
-            }
         }
 
         def staffsNeeded = 0
