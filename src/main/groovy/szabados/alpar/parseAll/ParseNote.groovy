@@ -1,6 +1,7 @@
 package szabados.alpar.parseAll
 
 import static szabados.alpar.parseAll.Accidental.getAccidental
+import static szabados.alpar.parseAll.Marks.*
 import static szabados.alpar.parseAll.NoteHead.getNoteHead
 import static szabados.alpar.parseAll.StemDirection.*
 
@@ -11,7 +12,7 @@ class ParseNote {
         def stem = (int) value4 % 100 - accidental
         def accidentalInParentheses = value4 >= 100
         def accidentalOffset = accidentalInParentheses ? value4 - stem - accidental - 100
-                : value4 - stem - accidental
+                                                       : value4 - stem - accidental
 
         def value5 = (int) value[5]?.toFloat() ?: 0
         def noteHeadInParentheses = value5 >= 10
@@ -23,6 +24,9 @@ class ParseNote {
         def dotsOffset = (int) value8 - dots - flags
         def dotDisplacement = value8 - flags - dots - dotsOffset
 
+        def value10 = value[10]?.toFloat() ?: 0F
+        def mark = (int) value10
+        def marksDisplacement = value10 - mark
         /*@formatter:off*/
         return new Note(staffIndex:               value[1]?.toFloat() ?: 0,
                         horizontalPosition:       value[2]?.toFloat() ?: 0,
@@ -40,7 +44,8 @@ class ParseNote {
                         dotsOffset:               dotsOffset,
                         dotDisplacement:          dotDisplacement,
                         leftRightDisplacement:    value[9]?.toFloat() ?: 0,
-                        marks:                    value[10]?.toFloat() ?: 0,
+                        marks:                    getMarks(mark),
+                        marksDisplacement:        marksDisplacement,
                         staffDisplacement:        value[11]?.toFloat() ?: 0 as int,
                         marksHorizontalOffset:    value[12]?.toFloat() ?: 0,
                         marksVerticalOffset:      value[13]?.toFloat() ?: 0,
