@@ -2,7 +2,8 @@ package szabados.alpar.parseAll
 
 import groovy.transform.Canonical
 
-@Canonical class Note extends StaffChild {
+@Canonical
+class Note extends StaffChild {
     int staffIndex
     float horizontalPosition
     float verticalPosition
@@ -19,7 +20,8 @@ import groovy.transform.Canonical
     int dotsOffset
     float dotDisplacement
     float leftRightDisplacement
-    float marks
+    Marks marks
+    float marksDisplacement
     int staffDisplacement
     float marksHorizontalOffset
     float marksVerticalOffset
