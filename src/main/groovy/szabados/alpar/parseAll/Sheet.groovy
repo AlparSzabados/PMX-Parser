@@ -2,6 +2,7 @@ package szabados.alpar.parseAll
 
 import groovy.transform.Canonical
 
-@ Canonical class Sheet {
+@Canonical
+class Sheet {
     ArrayList staffs
 }

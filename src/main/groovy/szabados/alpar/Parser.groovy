@@ -5,7 +5,6 @@ import szabados.alpar.parseAll.Staff
 import szabados.alpar.parseAll.StaffChild
 
 import static szabados.alpar.parseAll.Elements.*
-import static szabados.alpar.parseAll.Elements.getElement
 import static szabados.alpar.parseAll.ParseNote.parseNote
 import static szabados.alpar.parseAll.ParseStaff.parseStaff
 import static szabados.alpar.parseAll.ParseText.parseText

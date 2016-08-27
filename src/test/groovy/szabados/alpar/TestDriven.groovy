@@ -1,7 +1,6 @@
 package szabados.alpar
 
 import spock.lang.Specification
-import szabados.alpar.parseAll.Marks
 import szabados.alpar.parseAll.Note
 import szabados.alpar.parseAll.Sheet
 import szabados.alpar.parseAll.Staff
@@ -10,7 +9,7 @@ import szabados.alpar.parseAll.Text
 import static szabados.alpar.Parser.parser
 import static szabados.alpar.ReplaceHeader.replaceHeader
 import static szabados.alpar.parseAll.Accidental.FLAT
-import static szabados.alpar.parseAll.Marks.*
+import static szabados.alpar.parseAll.Marks.NONE
 import static szabados.alpar.parseAll.NoteHead.BLACK
 import static szabados.alpar.parseAll.StemDirection.NO_STEM
 

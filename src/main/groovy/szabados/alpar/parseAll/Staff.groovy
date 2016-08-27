@@ -2,7 +2,7 @@ package szabados.alpar.parseAll
 
 import groovy.transform.Canonical
 
-@ Canonical
+@Canonical
 class Staff extends StaffChild {
     int staffIndex
     float horizontalOffset

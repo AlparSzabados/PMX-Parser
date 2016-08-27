@@ -1,9 +1,9 @@
 package szabados.alpar.parseAll
 
 import static szabados.alpar.parseAll.Accidental.getAccidental
-import static szabados.alpar.parseAll.Marks.*
+import static szabados.alpar.parseAll.Marks.getMarks
 import static szabados.alpar.parseAll.NoteHead.getNoteHead
-import static szabados.alpar.parseAll.StemDirection.*
+import static szabados.alpar.parseAll.StemDirection.getStemDirection
 
 class ParseNote {
     static parseNote(List<String> value) {
@@ -12,7 +12,7 @@ class ParseNote {
         def stem = (int) value4 % 100 - accidental
         def accidentalInParentheses = value4 >= 100
         def accidentalOffset = accidentalInParentheses ? value4 - stem - accidental - 100
-                                                       : value4 - stem - accidental
+                : value4 - stem - accidental
 
         def value5 = (int) value[5]?.toFloat() ?: 0
         def noteHeadInParentheses = value5 >= 10
