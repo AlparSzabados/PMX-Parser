@@ -12,7 +12,7 @@ class ParseNote {
         def stem = (int) value4 % 100 - accidental
         def accidentalInParentheses = value4 >= 100
         def accidentalOffset = accidentalInParentheses ? value4 - stem - accidental - 100
-                : value4 - stem - accidental
+                                                       : value4 - stem - accidental
 
         def value5 = (int) value[5]?.toFloat() ?: 0
         def noteHeadInParentheses = value5 >= 10
