@@ -7,6 +7,7 @@ import szabados.alpar.parseAll.StaffChild
 
 import static szabados.alpar.parseAll.Elements.*
 import static szabados.alpar.parseAll.ParseNote.parseNote
+import static szabados.alpar.parseAll.ParseRest.*
 import static szabados.alpar.parseAll.ParseStaff.parseStaff
 import static szabados.alpar.parseAll.ParseText.parseText
 
@@ -29,9 +30,11 @@ class Parser {
             else if (currentElement[0] == getElement(NOTE))
                 elements += parseNote(currentElement)
             else if (currentElement[0] == getElement(REST))
-                elements += ParseRest.parseRest(currentElement)
+                elements += parseRest(currentElement)
             else if (currentElement[0] == getElement(TEXT))
                 elements += parseText(currentElement, nextElement)
+            else if (currentElement[0] == getElement(REST))
+                elements += parseRest(currentElement)
         }
 
         def staffsNeeded = 0
