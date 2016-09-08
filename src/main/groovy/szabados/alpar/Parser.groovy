@@ -21,7 +21,7 @@ class Parser {
             List<String> currentElement = list[i]
             List<String> nextElement = list[i + 1]
             String musicalElement = currentElement[0]
-            float musicalElementStaffIndex = currentElement[1].toFloat()
+            float musicalElementStaffIndex = currentElement[1]?.toFloat() ?: 0
 
             if (musicalElement == elementType(STAFF) && musicalElementStaffIndex != currentStaffIndex) {
                 staffs += parseStaff(currentElement)
