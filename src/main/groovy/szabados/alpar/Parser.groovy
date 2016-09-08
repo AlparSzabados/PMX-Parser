@@ -23,44 +23,55 @@ class Parser {
             String musicalElement = currentElement[0]
             float musicalElementStaffIndex = currentElement[1]?.toFloat() ?: 0
 
-            if (musicalElement == elementType(STAFF) && musicalElementStaffIndex != currentStaffIndex) {
-                staffs += parseStaff(currentElement)
-                currentStaffIndex = musicalElementStaffIndex
-            } else if (musicalElement == elementType(STAFF) && musicalElementStaffIndex == currentStaffIndex)
-                staffElements += parseStaff(currentElement)
-            else if (musicalElement == elementType(NOTE))
-                staffElements += parseNote(currentElement)
-            else if (musicalElement == elementType(REST))
-                staffElements += parseRest(currentElement)
-            else if (musicalElement == elementType(TEXT))
-                staffElements += parseText(currentElement, nextElement)
-            else if (musicalElement == elementType(REST))
-                staffElements += parseRest(currentElement)
-        }
-
-        def staffsNeeded = 0
-        for (int i in 0..<staffElements.size()) {
-            if (staffs.size() == 0) {
-                staffs += new Staff(staffIndex: staffElements[i].staffIndex)
-                staffsNeeded = staffElements[i].staffIndex
-            }
-            for (int j in 0..<staffs.size()) {
-                if (staffElements[i].staffIndex == staffs[j].staffIndex && staffElements[i].staffIndex > staffsNeeded) {
-                    staffsNeeded = staffElements[i].staffIndex
-                } else if (staffElements[i].staffIndex > staffsNeeded) {
-                    staffs += new Staff(staffIndex: staffElements[i].staffIndex)
-                    staffsNeeded = staffElements[i].staffIndex
-                }
+            switch (musicalElement) {
+                case elementType(STAFF):
+                    if (musicalElementStaffIndex == currentStaffIndex) {
+                        staffElements += parseStaff(currentElement)
+                    } else {
+                        staffs += parseStaff(currentElement)
+                        currentStaffIndex = musicalElementStaffIndex
+                    }
+                    break;
+                case elementType(NOTE): staffElements += parseNote(currentElement); break
+                case elementType(REST): staffElements += parseRest(currentElement); break
+                case elementType(TEXT): staffElements += parseText(currentElement, nextElement); break
             }
         }
 
-        staffs.sort()
+        staffs = createMissingStaffs(staffs, staffElements)
 
+        combineStaffsWithElements(staffs, staffElements)
+
+        staffs.sort { a, b -> a.staffIndex <=> b.staffIndex }
+
+        return new Sheet(staffs: staffs)
+    }
+
+    static combineStaffsWithElements(List<Staff> staffs, List<StaffChild> staffElements) {
         for (int i in 0..<staffElements.size())
             for (int j in 0..<staffs.size())
                 if (staffElements[i].staffIndex == staffs[j].staffIndex)
                     staffs[j].elements += staffElements[i]
+    }
 
-        return new Sheet(staffs: staffs)
+    static createMissingStaffs(List<Staff> staffs, List<StaffChild> staffElements) {
+        def staffsNeeded = 0
+        for (int i in 0..<staffElements.size()) {
+            if (staffs.size() == 0) {
+                staffs += new Staff(staffIndex: staffElements[i].staffIndex, dummyStaff: true)
+                staffsNeeded = staffElements[i].staffIndex
+            }
+            for (int j in 0..<staffs.size()) {
+                if (staffElements[i].staffIndex > staffsNeeded) {
+                    if (staffElements[i].staffIndex == staffs[j].staffIndex)
+                        staffsNeeded = staffElements[i].staffIndex
+                    else {
+                        staffs += new Staff(staffIndex: staffElements[i].staffIndex, dummyStaff: true)
+                        staffsNeeded = staffElements[i].staffIndex
+                    }
+                }
+            }
+            return staffs
+        }
     }
 }
