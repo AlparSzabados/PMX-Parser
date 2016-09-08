@@ -26,7 +26,7 @@ enum Elements {
         this.ordinal = ordinal
     }
 
-    public static getElement(Elements types) {
+    public static elementType(Elements types) {
         if (types.ordinal == 16) return 't'
         "${types.ordinal}"
     }
