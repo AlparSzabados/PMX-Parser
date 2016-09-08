@@ -28,6 +28,6 @@ enum Elements {
 
     public static getElement(Elements types) {
         if (types.ordinal == 16) return 't'
-        "${types.ordinal}.0000"
+        "${types.ordinal}"
     }
 }
