@@ -18,9 +18,9 @@ class RestTest extends Specification {
 
         where:
         fileContent = ' 8  0001.0000  0000.0000  0000.0000  0000.8500\n' +
-' 2  0001.0000  0004.5000  0002.0000  0000.0000  0000.0000  0001.0000\n' +
-' 2  0001.0000  0029.8571  0000.0000 -0001.0000  0000.0000  0002.0000 -0001.0000  0000.0000  0000.0000  0003.0000  0002.0000\n' +
-' 2  0001.0000  0096.5714  0000.0000 -0002.0000  0000.0000  0004.0000  0001.0000'
+                      ' 2  0001.0000  0004.5000  0002.0000  0000.0000  0000.0000  0001.0000\n' +
+                      ' 2  0001.0000  0029.8571  0000.0000 -0001.0000  0000.0000  0002.0000 -0001.0000  0000.0000  0000.0000  0003.0000  0002.0000\n' +
+                      ' 2  0001.0000  0096.5714  0000.0000 -0002.0000  0000.0000  0004.0000  0001.0000'
         result = new Sheet(staffs: [new Staff(staffIndex: 1, horizontalOffset: 0.0, rightEnd: 0.0, size: 0.85, elements:
                  [new Rest(staffIndex: 1, horizontalPosition: 4.5, verticalPosition: 2, dots: 0, duration: 1),
                   new Rest(staffIndex: 1, horizontalPosition: 29.8571, verticalPosition: 0, restType: -1, dots: 0, duration: 2, number: -1, centering: 0, horizontalDisplacement: 0, numberVerticalOffset: 3, numberSize: 2),
