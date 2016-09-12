@@ -1,6 +1,6 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.notes
 
-enum Accidental {
+enum Accidentals {
     NONE(0),
     FLAT(1),
     SHARP(2),
@@ -14,12 +14,12 @@ enum Accidental {
 
     private final int ordinal
 
-    private Accidental(int ordinal) {
+    private Accidentals(int ordinal) {
         this.ordinal = ordinal
     }
 
-    public static Accidental getAccidental(int ordinal) {
-        for (Accidental accidental : values()) {
+    public static Accidentals getAccidental(int ordinal) {
+        for (Accidentals accidental : values()) {
             if (ordinal == accidental.ordinal)
                 return accidental
         }

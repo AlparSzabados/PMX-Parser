@@ -1,13 +1,14 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.notes
 
 import groovy.transform.Canonical
+import szabados.alpar.parseAll.staffs.StaffChild
 
 @Canonical
 class Note extends StaffChild {
     int           staffIndex
     float         horizontalPosition
     float         verticalPosition
-    Accidental    accidental
+    Accidentals   accidental
     StemDirection stemDirection
     float         accidentalDisplacement
     boolean       accidentalInParentheses

@@ -1,4 +1,4 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.text
 
 class ParseText {
     static parseText(List<String> value, List<String> text) {

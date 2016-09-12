@@ -1,4 +1,4 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.notes
 
 enum NoteHead {
     DEFAULT(0),

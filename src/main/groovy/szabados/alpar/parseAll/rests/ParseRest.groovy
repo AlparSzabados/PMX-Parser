@@ -1,14 +1,12 @@
-package szabados.alpar.parseAll
-
-import static szabados.alpar.parseAll.RestType.*
+package szabados.alpar.parseAll.rests
 
 class ParseRest {
     static parseRest(List<String> value) {
-        return new Rests([
+        return new Rest([
                 staffIndex            : value[1]?.toFloat() ?: 0,
                 horizontalPosition    : value[2]?.toFloat() ?: 0,
                 verticalPosition      : value[3]?.toFloat() ?: 0,
-                restType              : getRestType(value[4].toFloat() as int),
+                restType              : RestType.getRestType(value[4].toFloat() as int),
                 dots                  : value[5]?.toFloat() ?: 0,
                 duration              : value[6]?.toFloat() ?: 0,
                 number                : value[7]?.toFloat() ?: 0,

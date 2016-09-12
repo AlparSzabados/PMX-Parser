@@ -1,14 +1,15 @@
 package szabados.alpar
 
 import szabados.alpar.parseAll.Sheet
-import szabados.alpar.parseAll.Staff
-import szabados.alpar.parseAll.StaffChild
+import szabados.alpar.parseAll.staffs.Staff
+import szabados.alpar.parseAll.staffs.StaffChild
 
 import static szabados.alpar.parseAll.Elements.*
-import static szabados.alpar.parseAll.ParseNote.parseNote
-import static szabados.alpar.parseAll.ParseRest.parseRest
-import static szabados.alpar.parseAll.ParseStaff.parseStaff
-import static szabados.alpar.parseAll.ParseText.parseText
+import static szabados.alpar.parseAll.clefs.ParseClef.parseClef
+import static szabados.alpar.parseAll.notes.ParseNote.parseNote
+import static szabados.alpar.parseAll.rests.ParseRest.parseRest
+import static szabados.alpar.parseAll.staffs.ParseStaff.parseStaff
+import static szabados.alpar.parseAll.text.ParseText.parseText
 
 //TODO make it work for every item
 class Parser {
@@ -34,6 +35,7 @@ class Parser {
                     break;
                 case elementType(NOTE): staffElements += parseNote(currentElement); break
                 case elementType(REST): staffElements += parseRest(currentElement); break
+                case elementType(CLEF): staffElements += parseClef(currentElement); break
                 case elementType(TEXT): staffElements += parseText(currentElement, nextElement); break
             }
         }
@@ -71,7 +73,7 @@ class Parser {
                     }
                 }
             }
-            return staffs
         }
+        return staffs
     }
 }

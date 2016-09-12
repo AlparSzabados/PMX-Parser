@@ -1,4 +1,4 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.staffs
 
 import groovy.transform.Canonical
 

@@ -1,9 +1,10 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.rests
 
 import groovy.transform.Canonical
+import szabados.alpar.parseAll.staffs.StaffChild
 
 @Canonical
-class Rests extends StaffChild {
+class Rest extends StaffChild {
     int      staffIndex
     float    horizontalPosition
     float    verticalPosition

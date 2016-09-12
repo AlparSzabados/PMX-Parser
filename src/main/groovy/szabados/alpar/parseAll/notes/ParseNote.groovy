@@ -1,9 +1,4 @@
-package szabados.alpar.parseAll
-
-import static szabados.alpar.parseAll.Accidental.getAccidental
-import static szabados.alpar.parseAll.Marks.getMarks
-import static szabados.alpar.parseAll.NoteHead.getNoteHead
-import static szabados.alpar.parseAll.StemDirection.getStemDirection
+package szabados.alpar.parseAll.notes
 
 class ParseNote {
     static parseNote(List<String> value) {
@@ -12,7 +7,7 @@ class ParseNote {
         def stem = (int) value4 % 100 - accidental
         def accidentalInParentheses = value4 >= 100
         def accidentalOffset = accidentalInParentheses ? value4 - stem - accidental - 100
-                                                       : value4 - stem - accidental
+                : value4 - stem - accidental
 
         def value5 = (int) value[5]?.toFloat() ?: 0
         def noteHeadInParentheses = value5 >= 10
@@ -30,11 +25,11 @@ class ParseNote {
         return new Note([staffIndex             : value[1]?.toFloat() ?: 0,
                          horizontalPosition     : value[2]?.toFloat() ?: 0,
                          verticalPosition       : value[3]?.toFloat() ?: 0,
-                         accidental             : getAccidental(accidental),
-                         stemDirection          : getStemDirection(stem),
+                         accidental             : Accidentals.getAccidental(accidental),
+                         stemDirection          : StemDirection.getStemDirection(stem),
                          accidentalDisplacement : accidentalOffset,
                          accidentalInParentheses: accidentalInParentheses,
-                         noteHead               : getNoteHead(noteHead),
+                         noteHead               : NoteHead.getNoteHead(noteHead),
                          noteHeadInParentheses  : noteHeadInParentheses,
                          duration               : value[6]?.toFloat() ?: 0,
                          stemLength             : value[7]?.toFloat() ?: 0,
@@ -43,7 +38,7 @@ class ParseNote {
                          dotsOffset             : dotsOffset,
                          dotDisplacement        : dotDisplacement,
                          leftRightDisplacement  : value[9]?.toFloat() ?: 0,
-                         marks                  : getMarks(mark),
+                         marks                  : Marks.getMarks(mark),
                          marksDisplacement      : marksDisplacement,
                          staffDisplacement      : value[11]?.toFloat() ?: 0 as int,
                          marksHorizontalOffset  : value[12]?.toFloat() ?: 0,

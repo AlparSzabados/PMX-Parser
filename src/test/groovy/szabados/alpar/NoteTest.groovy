@@ -1,16 +1,16 @@
 package szabados.alpar
 
 import spock.lang.Specification
-import szabados.alpar.parseAll.Note
 import szabados.alpar.parseAll.Sheet
-import szabados.alpar.parseAll.Staff
+import szabados.alpar.parseAll.notes.Note
+import szabados.alpar.parseAll.staffs.Staff
 
 import static szabados.alpar.Parser.parser
 import static szabados.alpar.ReplaceHeader.replaceHeader
-import static szabados.alpar.parseAll.Accidental.FLAT
-import static szabados.alpar.parseAll.Marks.STACCATO
-import static szabados.alpar.parseAll.NoteHead.BLACK
-import static szabados.alpar.parseAll.StemDirection.UP
+import static szabados.alpar.parseAll.notes.Accidentals.FLAT
+import static szabados.alpar.parseAll.notes.Marks.STACCATO
+import static szabados.alpar.parseAll.notes.NoteHead.BLACK
+import static szabados.alpar.parseAll.notes.StemDirection.UP
 
 class NoteTest extends Specification {
     /*@formatter:off*/

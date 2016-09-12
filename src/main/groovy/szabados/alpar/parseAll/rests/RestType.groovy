@@ -1,4 +1,4 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.rests
 
 enum RestType {
     _128TH(5),
@@ -6,23 +6,23 @@ enum RestType {
     _32ND(3),
     _16TH(2),
     _8TH(1),
-    _QUARTER(0),
-    _HALF(-1),
-    _WHOLE(-2),
-    _BREVE(-3),
-    _REPEAT_BAR_SIGN(-4),
-    _MULTI_BAR_REST(-5),
-    _NARROW_DOUBLE_WHOLE(-6),
-    _FOUR_BAR_REST(-7),
-    _1_BAR_REST(-11),
-    _2_BAR_REST(-12),
-    _3_BAR_REST(-13),
-    _4_BAR_REST(-14),
-    _5_BAR_REST(-15),
-    _6_BAR_REST(-16),
-    _7_BAR_REST(-17),
-    _8_BAR_REST(-18),
-    _9_BAR_REST(-19);
+    QUARTER(0),
+    HALF(-1),
+    WHOLE(-2),
+    BREVE(-3),
+    REPEAT_BAR_SIGN(-4),
+    MULTI_BAR_REST(-5),
+    NARROW_DOUBLE_WHOLE(-6),
+    FOUR_BAR_REST(-7),
+    ONE_BAR_REST(-11),
+    TWO_BAR_REST(-12),
+    THREE_BAR_REST(-13),
+    FOUT_BAR_REST(-14),
+    FIVE_BAR_REST(-15),
+    SIX_BAR_REST(-16),
+    SEVEN_BAR_REST(-17),
+    EIGHT_BAR_REST(-18),
+    NINE_BAR_REST(-19);
 
     private final int ordinal
 
