@@ -1,4 +1,4 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.slurs
 
 class ParseSlur {
     static parseSlur(List<String> value) {
