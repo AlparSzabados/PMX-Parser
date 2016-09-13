@@ -1,5 +1,6 @@
 package szabados.alpar
 
+import szabados.alpar.parseAll.ParseSlur
 import szabados.alpar.parseAll.lines.ParseLine
 import szabados.alpar.parseAll.Sheet
 import szabados.alpar.parseAll.staffs.Staff
@@ -7,6 +8,7 @@ import szabados.alpar.parseAll.staffs.StaffChild
 
 import static szabados.alpar.parseAll.Elements.*
 import static ParseLine.*
+import static szabados.alpar.parseAll.ParseSlur.*
 import static szabados.alpar.parseAll.clefs.ParseClef.parseClef
 import static szabados.alpar.parseAll.notes.ParseNote.parseNote
 import static szabados.alpar.parseAll.rests.ParseRest.parseRest
@@ -39,6 +41,7 @@ class Parser {
                 case elementType(REST): staffElements += parseRest(currentElement); break
                 case elementType(CLEF): staffElements += parseClef(currentElement); break
                 case elementType(LINE): staffElements += parseLine(currentElement); break
+                case elementType(SLUR): staffElements += parseSlur(currentElement); break
                 case elementType(TEXT): staffElements += parseText(currentElement, nextElement); break
             }
         }
