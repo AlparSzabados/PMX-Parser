@@ -11,7 +11,6 @@ class ParseLine {
                          leftVerticalPosition   : value[3]?.toFloat() ?: 0,
                          rightVerticalPosition  : value[4]?.toFloat() ?: 0,
                          rightHorizontalPosition: value[5]?.toFloat() ?: 0,
-//                         lineType               : getLineType(line),
                          wiggleCurve            : value[6]?.toFloat() ?: 0,
                          dashSize               : value[7]?.toFloat() ?: 0,
                          rotationOrDashSpace    : value[8]?.toFloat() ?: 0,
@@ -20,6 +19,8 @@ class ParseLine {
                          rightVerticalBracket   : value[11]?.toFloat() ?: 0,
                          rotation               : value[12]?.toFloat() ?: 0,
                          crescendoStart         : value[13]?.toFloat() ?: 0,
-                         crescendoEnd           : value[14]?.toFloat() ?: 0])
+                         crescendoEnd           : value[14]?.toFloat() ?: 0,
+                         addedHorizontalPoint   : value[15]?.toFloat() ?: 0,
+                         addedVerticalPoint     : value[16]?.toFloat() ?: 0])
     }
 }

@@ -5,19 +5,20 @@ import szabados.alpar.parseAll.staffs.StaffChild
 
 @Canonical
 class Line extends StaffChild {
-    int      staffIndex
-    float    rightHorizontalPosition
-    float    rightVerticalPosition
-    float    leftVerticalPosition
-    float    leftHorizontalPosition
-    LineType lineType
-    float    wiggleCurve
-    float    dashSize
-    float    rotationOrDashSpace
-    float    thickness
-    float    leftVerticalBracket
-    float    rightVerticalBracket
-    float    rotation
-    float    crescendoStart
-    float    crescendoEnd
+    int   staffIndex
+    float rightHorizontalPosition
+    float rightVerticalPosition
+    float leftVerticalPosition
+    float leftHorizontalPosition
+    float wiggleCurve
+    float dashSize
+    float rotationOrDashSpace
+    float thickness
+    float leftVerticalBracket
+    float rightVerticalBracket
+    float rotation
+    float crescendoStart
+    float crescendoEnd
+    float addedHorizontalPoint
+    float addedVerticalPoint
 }
