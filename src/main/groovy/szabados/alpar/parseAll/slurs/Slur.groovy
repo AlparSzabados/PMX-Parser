@@ -1,4 +1,4 @@
-package szabados.alpar.parseAll
+package szabados.alpar.parseAll.slurs
 
 import groovy.transform.Canonical
 import szabados.alpar.parseAll.staffs.StaffChild
