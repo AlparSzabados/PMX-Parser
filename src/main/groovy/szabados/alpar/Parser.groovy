@@ -1,6 +1,6 @@
 package szabados.alpar
 
-import szabados.alpar.parseAll.ParseSlur
+import szabados.alpar.parseAll.slurs.ParseSlur
 import szabados.alpar.parseAll.lines.ParseLine
 import szabados.alpar.parseAll.Sheet
 import szabados.alpar.parseAll.staffs.Staff
@@ -8,7 +8,7 @@ import szabados.alpar.parseAll.staffs.StaffChild
 
 import static szabados.alpar.parseAll.Elements.*
 import static ParseLine.*
-import static szabados.alpar.parseAll.ParseSlur.*
+import static ParseSlur.*
 import static szabados.alpar.parseAll.clefs.ParseClef.parseClef
 import static szabados.alpar.parseAll.notes.ParseNote.parseNote
 import static szabados.alpar.parseAll.rests.ParseRest.parseRest
