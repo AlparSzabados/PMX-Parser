@@ -25,7 +25,7 @@ class TestDriven extends Specification {
         fileContent = '8 0002.0000 0.0000 0200.0000\n'+
                       '8 0002.0000 0.0000 0150.0000\n'+
                       '1 0002.0000 0.0000 -0013.0000 1.0000 1.0000'
-        result = new Sheet(staffs: [new Staff(staffIndex: 2, horizontalOffset: 0, rightEnd: 200, dummyStaff: false, elements: [new Staff(staffIndex: 2, horizontalOffset: 0, rightEnd: 150, dummyStaff: false),
+        result = new Sheet(elements: [new Staff(staffIndex: 2, horizontalOffset: 0, rightEnd: 200, dummyStaff: false, elements: [new Staff(staffIndex: 2, horizontalOffset: 0, rightEnd: 150, dummyStaff: false),
                                                                                                                                new Note(staffIndex: 2, horizontalPosition: 0.0, verticalPosition: -13.0, accidental: FLAT, stemDirection: NO_STEM, noteHead: BLACK, noteHeadInParentheses: false, marks: NONE)])])
         }
 
@@ -42,16 +42,18 @@ class TestDriven extends Specification {
                       '_00?c 2016 Schott Music GmbH & Co. KG, Mainz\n'+
                       '1 0002.0000 0.0000 -0013.0000 1.0000 1.0000\n'+
                       '8 0002.0000 0.0000 0200.0000'
-         result = new Sheet(staffs: [new Staff(staffIndex: 1, dummyStaff: true, elements: [new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz'),
-                                                                                           new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz')]),
-                                     new Staff(staffIndex: 2, horizontalOffset: 0.0, rightEnd: 200.0, elements: [new Note(staffIndex: 2, horizontalPosition: 0.0, verticalPosition: -13.0, accidental: FLAT, stemDirection: NO_STEM, noteHead: BLACK, noteHeadInParentheses: false, marks: NONE)])])
+         result = new Sheet(elements: [new Staff(staffIndex: 1, dummyStaff: true),
+                                       new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz'),
+                                       new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz'),
+                                       new Staff(staffIndex: 2, horizontalOffset: 0.0, rightEnd: 200.0),
+                                       new Note(staffIndex: 2, horizontalPosition: 0.0, verticalPosition: -13.0, accidental: FLAT, stemDirection: NO_STEM, noteHead: BLACK, noteHeadInParentheses: false, marks: NONE)])
     }
 
     def 'test no staff with elements' () {
         when: def input = replaceHeader(fileContent)
               def value = parser(input)
 
-        then: value == result
+        then: value == resultc3s
 
         where:
         fileContent = 't 0001.0000 0.0000 -0013.0000 0001.0000 0.7100\n'+
@@ -59,7 +61,7 @@ class TestDriven extends Specification {
                       't 0001.0000 0.0000 -0013.0000 1.0000 0.7100\n'+
                       '_00?c 2016 Schott Music GmbH & Co. KG, Mainz\n'+
                       '1 0002.0000 0.0000 -0013.0000 1.0000 1.0000'
-        result = new Sheet(staffs: [new Staff(staffIndex: 1, dummyStaff: true, elements: [new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz'),
+        result = new Sheet(elements: [new Staff(staffIndex: 1, dummyStaff: true, elements: [new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz'),
                                                                                           new Text(staffIndex: 1, horizontalOffset: 0.0, verticalOffset: -13.0, kerning: 1.0, fontSize: 0.71, text: '_00?c 2016 Schott Music GmbH & Co. KG, Mainz')]),
                                     new Staff(staffIndex: 2, dummyStaff: true, elements: [new Note(staffIndex: 2, horizontalPosition: 0.0, verticalPosition: -13.0, accidental: FLAT, stemDirection: NO_STEM, noteHead: BLACK, noteHeadInParentheses: false, marks: NONE)])])
     }
