@@ -5,7 +5,7 @@ import szabados.alpar.parseAll.staffs.StaffChild
 
 //TODO add missing fields
 @Canonical
-class Text extends StaffChild {
+class Text implements StaffChild {
     int    staffIndex
     float  horizontalOffset
     float  verticalOffset

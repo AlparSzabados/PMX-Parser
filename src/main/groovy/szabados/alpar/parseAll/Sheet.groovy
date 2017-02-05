@@ -4,5 +4,5 @@ import groovy.transform.Canonical
 
 @Canonical
 class Sheet {
-    ArrayList staffs
+    ArrayList elements
 }

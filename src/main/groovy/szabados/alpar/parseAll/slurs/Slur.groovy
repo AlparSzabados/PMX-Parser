@@ -4,7 +4,7 @@ import groovy.transform.Canonical
 import szabados.alpar.parseAll.staffs.StaffChild
 
 @Canonical
-class Slur extends StaffChild {
+class Slur implements StaffChild {
     int   staffIndex
     float leftHorizontalPosition
     float leftVerticalPosition

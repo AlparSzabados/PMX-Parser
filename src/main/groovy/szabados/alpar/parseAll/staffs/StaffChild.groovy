@@ -1,5 +1,5 @@
 package szabados.alpar.parseAll.staffs
 
-class StaffChild {
+interface StaffChild {
     int staffIndex
 }

@@ -4,7 +4,7 @@ import groovy.transform.Canonical
 import szabados.alpar.parseAll.staffs.StaffChild
 
 @Canonical
-class Rest extends StaffChild {
+class Rest implements StaffChild {
     int      staffIndex
     float    horizontalPosition
     float    verticalPosition
